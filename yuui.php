@@ -1,3 +1,5 @@
+<?php
+
 include_once('\security.php');
 include_once('\sessions.php'):
 include_once('\header.php');
@@ -25,8 +27,9 @@ $result = $con->query($query);
 if ($result->num_rows() >= 1){
   $con->die();
   $sess->create('login');
-  
+    ?><script>window.location = "<?php echo $_SERVER['HTTP_REFERER']; ?>";</script><?php
 } else {
   echo 'that username or password does not exist';
 }
 
+?>
